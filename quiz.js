@@ -4,6 +4,7 @@ class Question {
     this.fetchQuestions();
     this.fetchOptions();
     this.fetchCorrectOptions();
+    this.isCorrect();
   }
   fetchQuestions() {
     let questions = this.quizContainer.getElementsByClassName("quiz-section");
