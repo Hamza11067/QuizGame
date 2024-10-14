@@ -14,7 +14,7 @@ h1 {
 
 #quizContainer {
   margin: 0 auto;
-  max-width: 700px;
+  max-width: 500px;
   padding: 1rem;
   border-radius: 1rem;
   background-color: lightblue;
@@ -40,5 +40,6 @@ h1 {
 }
 
 .quiz-options li:hover {
-  background-color: aqua;
+  background-color: rgb(30, 24, 24);
+  color: white;
 }

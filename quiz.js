@@ -16,8 +16,6 @@ class Question {
     this.questions = Array.from(questions).map((question) => {
       return question.getElementsByClassName("question");
     });
-
-    // console.log(this.questions);
   }
 
   fetchOptions() {
@@ -25,7 +23,6 @@ class Question {
     this.options = Array.from(options).map((option) =>
       Array.from(option.getElementsByTagName("li")).map((opt) => opt.innerHTML)
     );
-    // console.log(this.options);
   }
 
   fetchCorrectOptions() {
@@ -34,7 +31,6 @@ class Question {
     this.correctOptions = Array.from(correctOptions).map((correctOption) => {
       return correctOption.getElementsByClassName("correct")[0].innerHTML;
     });
-    // console.log(this.correctOptions);
   }
 
   renderQuestion() {
