@@ -20,10 +20,9 @@ h1 {
   background-color: lightblue;
 }
 
-.quiz-section:nth-child(1){
+.quiz-section {
   display: none;
 }
-
 
 .question {
   margin: 0%;
