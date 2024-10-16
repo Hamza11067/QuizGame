@@ -3,6 +3,9 @@ class Question {
     this.quizContainer = document.getElementById(quizContainerId);
     this.currentQuestionIndex = 0;
     this.score = 0;
+    this.TimeLimit = 10;
+    this.TimeInterval = null;
+    this.startTimer();
     this.fetchQuestions();
     this.fetchOptions();
     this.fetchCorrectOptions();
@@ -43,6 +46,7 @@ class Question {
         questionBlock.style.display = "none";
       }
     });
+    this.startTimer();
   }
 
   addEventListeners() {
@@ -53,6 +57,7 @@ class Question {
   }
 
   handleAnswerClick(event) {
+    clearInterval(this.TimeInterval);
     const selectedOption = event.target.innerHTML;
     const correctAnswer = this.correctOptions[this.currentQuestionIndex];
 
@@ -76,6 +81,7 @@ class Question {
   }
 
   endQuiz() {
+    clearInterval(this.TimeInterval);
     this.quizContainer.innerHTML += `
       <div id="finalScreen">
         <h2>Quiz completed!</h2>
@@ -96,6 +102,32 @@ class Question {
     finalScreen.parentNode.removeChild(finalScreen);
     this.renderQuestion();
     this.addEventListeners();
+  }
+
+  startTimer() {
+    let timer = this.quizContainer.getElementsByClassName("timer")[0];
+    let timeLeft = this.TimeLimit;
+    // window.time = 0;
+
+    if (this.TimeInterval) {
+      clearInterval(this.TimeInterval);
+    }
+
+    this.TimeInterval = setInterval(() => {
+      timeLeft--;
+      timer.innerHTML = timeLeft;
+
+      if (timeLeft <= 0) {
+        clearInterval(this.TimeInterval);
+        alert("Time up");
+        this.nextQuestion();
+      }
+    }, 1000);
+
+    // setInterval(function (time) {
+    //   window.time += 1;
+    //   timer.innerHTML = window.time;
+    // }, 1000);
   }
 }
 
